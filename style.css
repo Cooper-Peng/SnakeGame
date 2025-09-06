@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+.game-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.game-controls {
+    margin-bottom: 15px;
+}
+
+.speed-control {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.speed-control label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+#speedSlider {
+    width: 80%;
+    margin: 0 auto;
+    -webkit-appearance: none;
+    height: 10px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+}
+
+#speedSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+#speedSlider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.speed-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 5px auto 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin: 0 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+#gameCanvas {
+    background-color: #222;
+    border-radius: 5px;
+    margin: 0 auto;
+    display: block;
+    max-width: 100%;
+}
+
+.game-instructions {
+    margin-top: 20px;
+    text-align: left;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.game-instructions h2 {
+    color: #4CAF50;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.game-instructions p {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+/* 移动端适配 */
+@media (max-width: 500px) {
+    .game-container {
+        padding: 15px;
+        border-radius: 0;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .game-info {
+        font-size: 1rem;
+    }
+    
+    button {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+    
+    #gameCanvas {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .game-instructions h2 {
+        font-size: 1.1rem;
+    }
+    
+    .game-instructions p {
+        font-size: 0.9rem;
+    }
+}
