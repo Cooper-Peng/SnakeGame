@@ -244,33 +244,90 @@ function generateFood() {
 // 绘制游戏
 function drawGame() {
     // 清空画布
-    ctx.fillStyle = '#222';
+    ctx.fillStyle = '#1C1C1E';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
+    // 绘制网格
+    drawGrid();
+    
     // 绘制食物
-    ctx.fillStyle = 'red';
-    ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
+    const foodRadius = gridSize / 2 - 2;
+    ctx.fillStyle = '#FF3B30';
+    ctx.beginPath();
+    ctx.arc(
+        food.x * gridSize + gridSize / 2,
+        food.y * gridSize + gridSize / 2,
+        foodRadius,
+        0,
+        Math.PI * 2
+    );
+    ctx.fill();
     
     // 绘制蛇
     snake.forEach((segment, index) => {
         // 蛇头用不同颜色
         if (index === 0) {
-            ctx.fillStyle = '#4CAF50';
+            ctx.fillStyle = '#34C759'; // iOS绿色
         } else {
-            ctx.fillStyle = '#8BC34A';
+            ctx.fillStyle = '#30D158'; // 浅一点的绿色
         }
         
-        ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize - 1, gridSize - 1);
+        // 圆角矩形
+        const cornerRadius = 4;
+        const x = segment.x * gridSize + 1;
+        const y = segment.y * gridSize + 1;
+        const width = gridSize - 2;
+        const height = gridSize - 2;
+        
+        ctx.beginPath();
+        ctx.moveTo(x + cornerRadius, y);
+        ctx.lineTo(x + width - cornerRadius, y);
+        ctx.quadraticCurveTo(x + width, y, x + width, y + cornerRadius);
+        ctx.lineTo(x + width, y + height - cornerRadius);
+        ctx.quadraticCurveTo(x + width, y + height, x + width - cornerRadius, y + height);
+        ctx.lineTo(x + cornerRadius, y + height);
+        ctx.quadraticCurveTo(x, y + height, x, y + height - cornerRadius);
+        ctx.lineTo(x, y + cornerRadius);
+        ctx.quadraticCurveTo(x, y, x + cornerRadius, y);
+        ctx.closePath();
+        ctx.fill();
     });
     
     // 如果游戏结束，显示游戏结束文字
     if (gameOver) {
+        // 半透明背景
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
         ctx.fillStyle = 'white';
-        ctx.font = '30px Arial';
+        ctx.font = '30px -apple-system, BlinkMacSystemFont';
+        ctx.fontWeight = 'bold';
         ctx.textAlign = 'center';
         ctx.fillText('游戏结束!', canvas.width / 2, canvas.height / 2);
-        ctx.font = '20px Arial';
-        ctx.fillText('按开始按钮重新开始', canvas.width / 2, canvas.height / 2 + 30);
+        ctx.font = '20px -apple-system, BlinkMacSystemFont';
+        ctx.fillText('按开始按钮重新开始', canvas.width / 2, canvas.height / 2 + 40);
+    }
+}
+
+// 绘制网格
+function drawGrid() {
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+    ctx.lineWidth = 1;
+    
+    // 绘制垂直线
+    for (let x = 0; x <= canvas.width; x += gridSize) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
+    }
+    
+    // 绘制水平线
+    for (let y = 0; y <= canvas.height; y += gridSize) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
     }
 }
 

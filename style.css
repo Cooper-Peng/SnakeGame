@@ -5,8 +5,8 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f2f2f7;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,18 +16,19 @@ body {
 
 .game-container {
     background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 24px;
     max-width: 500px;
     width: 100%;
     text-align: center;
 }
 
 h1 {
-    color: #4CAF50;
+    color: #007AFF;
     margin-bottom: 20px;
     font-size: 2rem;
+    font-weight: 600;
 }
 
 .game-info {
@@ -67,19 +68,21 @@ h1 {
 #speedSlider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
-    background: #4CAF50;
+    background: #007AFF;
     cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 #speedSlider::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
-    background: #4CAF50;
+    background: #007AFF;
     cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .speed-labels {
@@ -92,46 +95,50 @@ h1 {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #007AFF;
     color: white;
     border: none;
-    padding: 8px 16px;
+    padding: 10px 18px;
     margin: 0 5px;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.3s;
+    font-weight: 500;
+    transition: all 0.2s ease;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #0062CC;
+    transform: translateY(-1px);
 }
 
 button:disabled {
-    background-color: #cccccc;
+    background-color: #B0B0B0;
     cursor: not-allowed;
 }
 
 #gameCanvas {
-    background-color: #222;
-    border-radius: 5px;
-    margin: 0 auto;
+    background-color: #1C1C1E;
+    border-radius: 12px;
+    margin: 15px auto;
     display: block;
     max-width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .game-instructions {
     margin-top: 20px;
     text-align: left;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
+    padding: 16px;
+    background-color: #F2F2F7;
+    border-radius: 12px;
 }
 
 .game-instructions h2 {
-    color: #4CAF50;
+    color: #007AFF;
     font-size: 1.3rem;
     margin-bottom: 10px;
+    font-weight: 600;
 }
 
 .game-instructions p {
